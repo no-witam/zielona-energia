@@ -1,37 +1,52 @@
 <?php
-// Połączenie z bazą danych
-include 'database.php';
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "energia_odnawialna";
 
-// Pobieranie kategorii z parametru URL
-$category = $_GET['category'];
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-// Pobieranie szczegółowych informacji z bazy danych na podstawie kategorii
-$query = "SELECT * FROM `energia geometralna` WHERE category='$category'";
-$result = mysqli_query($conn, $query);
-$row = mysqli_fetch_assoc($result);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$topic = $_GET['topic'];
+$sql = "SELECT usluga FROM uslugi WHERE kategoria='$topic'";
+$result = $conn->query($sql);
+
+$details = [
+    'fotowoltaika' => 'Fotowoltaika',
+    'wiatraki' => 'Turbiny Wiatrowe',
+    'geotermalna' => 'Energia Geotermalna'
+];
+
+$title = $details[$topic];
 ?>
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informacje - Zielona Energia</title>
-    <link rel="stylesheet" href="style.css">
+    <title><?php echo $title; ?></title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="content">
-        <h2>Informacje o <?php echo ucfirst($category); ?></h2>
-        <?php
-        // Wyświetlanie informacji na podstawie kategorii
-        if ($category == 'fotowoltaika') {
-            echo "<p>Doradztwo techniczne i energetyczne, projektowanie i montaż instalacji fotowoltaicznych...</p>";
-        } elseif ($category == 'wiatraki') {
-            echo "<p>Projektowanie, montaż oraz serwis turbin wiatrowych. Audyty i modernizacja...</p>";
-        } elseif ($category == 'geotermia') {
-            echo "<p>Doradztwo, projektowanie i montaż systemów geotermalnych. Wiercenia, serwis pomp ciepła...</p>";
-        }
-        ?>
+        <h1><?php echo $title; ?></h1>
+        <p>
+            <?php
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    echo $row['usluga'] . "<br>";
+                }
+            } else {
+                echo "Brak danych.";
+            }
+            ?>
+        </p>
     </div>
 </body>
 </html>
+<?php
+$conn->close();
+?>

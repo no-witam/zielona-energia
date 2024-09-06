@@ -1,78 +1,46 @@
-/* Styl tła */
 body, html {
-    height: 100%;
     margin: 0;
+    padding: 0;
+    height: 100%;
     font-family: Arial, sans-serif;
 }
 
 .background {
-    background-image: url('background.jpg'); /* Tło jako zdjęcie */
-    height: 100%;
-    background-position: center;
+    background-image: url('wiatrak1.jpeg'); /* Twoje zdjęcie tła */
     background-size: cover;
+    background-position: center;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.content {
-    background-color: rgba(255, 255, 255, 0.8);
+.info-window {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
     padding: 20px;
-    border-radius: 20px;
+    width: 300px;
     text-align: center;
-    width: 60%;
-    max-width: 800px;
-}
-
-/* Styl slajdów */
-.slideshow-container {
-    position: relative;
-    overflow: hidden;
 }
 
 .slide {
     display: none;
 }
 
-.slide h2 {
-    margin: 0;
-    font-size: 28px;
+.slide.active {
+    display: block;
 }
 
-.slide p {
-    margin: 10px 0;
-}
-
-.button {
-    display: inline-block;
+button {
+    margin-top: 10px;
     padding: 10px 20px;
-    background-color: #28a745;
+    border: none;
+    background-color: #007BFF;
     color: white;
-    text-decoration: none;
     border-radius: 5px;
-    margin-top: 15px;
+    cursor: pointer;
 }
 
-.button:hover {
-    background-color: #218838;
-}
-
-/* Styl kropek */
-.dots {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.dot {
-    height: 15px;
-    width: 15px;
-    margin: 0 5px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.3s;
-}
-
-.dot.active {
-    background-color: #28a745;
+button:hover {
+    background-color: #0056b3;
 }
