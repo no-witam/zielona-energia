@@ -6,15 +6,30 @@
     <title>Zielona Energia</title>
     <link rel="stylesheet" href="style.css">
     <script>
-        // JavaScript do zmiany slajdów
+        // JavaScript do zmiany slajdów i tła
         let currentSlide = 0;
+        
         function showSlide(index) {
             const slides = document.querySelectorAll('.slide');
             const dots = document.querySelectorAll('.dot');
+            const background = document.querySelector('.background');
+
+            // Ukryj wszystkie slajdy i usuń aktywne klasy z kropek
             slides.forEach(slide => slide.style.display = 'none');
             dots.forEach(dot => dot.classList.remove('active'));
+
+            // Wyświetl aktualny slajd
             slides[index].style.display = 'block';
             dots[index].classList.add('active');
+
+            // Zmień tło w zależności od slajdu
+            if (index === 0) {
+                background.style.backgroundImage = "url('fotowoltaika.jpg')";
+            } else if (index === 1) {
+                background.style.backgroundImage = "url('wiatraki.png')";
+            } else if (index === 2) {
+                background.style.backgroundImage = "url('energia geo.png')";
+            }
         }
 
         function nextSlide() {
@@ -24,7 +39,7 @@
 
         window.onload = function() {
             showSlide(currentSlide);
-            setInterval(nextSlide, 5000); // Zmiana slajdu co 5 sekund
+            setInterval(nextSlide, 5000); 
         }
     </script>
 </head>
@@ -58,3 +73,4 @@
     </div>
 </body>
 </html>
+
