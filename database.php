@@ -1,14 +1,15 @@
 <?php
-$servername = "localhost";  // Serwer bazy danych
-$username = "root";          // Nazwa użytkownika
-$password = "";              // Hasło
-$database = "zielona_en";    // Zmieniona nazwa bazy danych
-
 // Połączenie z bazą danych
-$conn = mysqli_connect($servername, $username, $password, $database);
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "zielona_en";
+
+// Tworzenie połączenia
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 // Sprawdzanie połączenia
-if (!$conn) {
-    die("Połączenie nieudane: " . mysqli_connect_error());
+if ($conn->connect_error) {
+    die("Połączenie nieudane: " . $conn->connect_error);
 }
 ?>

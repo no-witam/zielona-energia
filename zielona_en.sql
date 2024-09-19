@@ -75,7 +75,7 @@ INSERT INTO `fotowoltaika` (`Doradztwo techniczne i energetyczne`, `Projektowani
 -- Struktura tabeli dla tabeli `turbiny wiatrowe`
 --
 
-CREATE TABLE `turbiny wiatrowe` (
+CREATE TABLE `turbinywiatrowe` (
   `Doradztwo i audyty wiatrowe` varchar(1000) NOT NULL,
   `Projektowanie instalacji wiatrowych` varchar(1000) NOT NULL,
   `Montaż turbin wiatrowych` varchar(1000) NOT NULL,
@@ -88,16 +88,11 @@ CREATE TABLE `turbiny wiatrowe` (
 -- Zrzut danych tabeli `turbiny wiatrowe`
 --
 
-INSERT INTO `turbiny wiatrowe` (`Doradztwo i audyty wiatrowe`, `Projektowanie instalacji wiatrowych`, `Montaż turbin wiatrowych`, `Serwis i konserwacja turbin wiatrowych`, `Monitorowanie i optymalizacja wydajności`, `Demontaż i modernizacja turbin`) VALUES
+INSERT INTO `turbinywiatrowe` (`Doradztwo i audyty wiatrowe`, `Projektowanie instalacji wiatrowych`, `Montaż turbin wiatrowych`, `Serwis i konserwacja turbin wiatrowych`, `Monitorowanie i optymalizacja wydajności`, `Demontaż i modernizacja turbin`) VALUES
 ('o	Ocena warunków wiatrowych w danej lokalizacji.', 'o	Opracowanie projektu farmy wiatrowej lub pojedynczych turbin wiatrowych.', 'o	Opracowanie projektu farmy wiatrowej lub pojedynczych turbin wiatrowych.', 'o	Regularne przeglądy techniczne i diagnostyka turbin.', 'o	Zdalne monitorowanie pracy turbin.', 'o	Demontaż starych lub zużytych turbin wiatrowych.'),
 ('o	Pomiar prędkości i kierunku wiatru w celu określenia opłacalności inwestycji.', 'o	Dobór odpowiedniego rodzaju turbin (na lądzie lub morzu) oraz ich mocy.', 'o	Budowa infrastruktury towarzyszącej, takiej jak fundamenty, wieże i połączenia elektryczne.', 'o	Naprawa turbin, w tym łopat, generatorów i systemów sterowania oraz usługi konserwacyjne, w tym czyszczenie i smarowanie ruchomych części.\r\n', 'o	Optymalizacja ustawień turbin w celu maksymalizacji produkcji energii.', 'o	Modernizacja istniejących instalacji w celu zwiększenia efektywności lub wydajności.');
 COMMIT;
 
-
-CREATE TABLE gallery (
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    image_name VARCHAR(255) NOT NULL
-);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

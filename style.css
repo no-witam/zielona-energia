@@ -6,14 +6,26 @@ body, html {
 }
 
 .background {
-    background-image: url('fotowoltaika.jpg'); /* Domyślne tło */
     height: 100%;
     background-position: center;
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background-image 0.5s ease-in-out; /* Płynna zmiana tła */
+    position: relative; /* Dodane, aby `background-video` był za tłem */
+}
+
+.background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    object-fit: cover; /* Dzięki temu wideo pokrywa całe tło */
 }
 
 .content {
@@ -25,23 +37,9 @@ body, html {
     max-width: 800px;
 }
 
-/* Styl slajdów */
-.slideshow-container {
-    position: relative;
-    overflow: hidden;
-}
-
-.slide {
-    display: none;
-}
-
-.slide h2 {
-    margin: 0;
-    font-size: 28px;
-}
-
-.slide p {
-    margin: 10px 0;
+/* Styl przycisków */
+.button-container {
+    margin-top: 20px;
 }
 
 .button {
@@ -51,29 +49,30 @@ body, html {
     color: white;
     text-decoration: none;
     border-radius: 5px;
-    margin-top: 15px;
+    margin: 10px;
 }
 
 .button:hover {
     background-color: #218838;
 }
 
-/* Styl kropek */
-.dots {
-    text-align: center;
+/* Styl dla szczegółów */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 20px;
     margin-top: 20px;
 }
 
-.dot {
-    height: 15px;
-    width: 15px;
-    margin: 0 5px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.3s;
+p {
+    font-size: 16px;
+    line-height: 1.5;
 }
 
-.dot.active {
-    background-color: #28a745;
+a.button {
+    margin-top: 20px;
+    display: inline-block;
 }
