@@ -1,12 +1,23 @@
 <?php
-// Połączenie z bazą danych
 include 'database.php';
 
-// Pobieranie kategorii z parametru URL
-$category = $_GET['category'];
+// Sprawdzenie, czy zmienna 'category' jest przekazana w URL
+if (isset($_GET['category'])) {
+    $category = $_GET['category'];
+} else {
+    // W przypadku braku 'category', przekierowanie lub wyświetlenie błędu
+    die("Błąd: Nie wybrano kategorii.");
+}
 
-// Pobieranie szczegółowych informacji z bazy danych na podstawie kategorii
-$query = "SELECT * FROM `energia geometralna` WHERE category='$category'";
+$query = "";
+if ($category == 'fotowoltaika') {
+    $query = "SELECT * FROM `fotowoltaika`";
+} elseif ($category == 'wiatraki') {
+    $query = "SELECT * FROM `turbiny wiatrowe`";
+} elseif ($category == 'geotermia') {
+    $query = "SELECT * FROM `energia geometralna`";
+}
+
 $result = mysqli_query($conn, $query);
 $row = mysqli_fetch_assoc($result);
 ?>
@@ -23,13 +34,27 @@ $row = mysqli_fetch_assoc($result);
     <div class="content">
         <h2>Informacje o <?php echo ucfirst($category); ?></h2>
         <?php
-        // Wyświetlanie informacji na podstawie kategorii
         if ($category == 'fotowoltaika') {
             echo "<p>Doradztwo techniczne i energetyczne, projektowanie i montaż instalacji fotowoltaicznych...</p>";
+            echo "<ul>";
+            foreach ($row as $key => $value) {
+                echo "<li><strong>$key:</strong> $value</li>";
+            }
+            echo "</ul>";
         } elseif ($category == 'wiatraki') {
             echo "<p>Projektowanie, montaż oraz serwis turbin wiatrowych. Audyty i modernizacja...</p>";
+            echo "<ul>";
+            foreach ($row as $key => $value) {
+                echo "<li><strong>$key:</strong> $value</li>";
+            }
+            echo "</ul>";
         } elseif ($category == 'geotermia') {
             echo "<p>Doradztwo, projektowanie i montaż systemów geotermalnych. Wiercenia, serwis pomp ciepła...</p>";
+            echo "<ul>";
+            foreach ($row as $key => $value) {
+                echo "<li><strong>$key:</strong> $value</li>";
+            }
+            echo "</ul>";
         }
         ?>
     </div>
