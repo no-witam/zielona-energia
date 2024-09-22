@@ -1,25 +1,31 @@
 <?php
 include 'database.php';
 
-// Sprawdzenie, czy zmienna 'category' jest przekazana w URL
 if (isset($_GET['category'])) {
     $category = $_GET['category'];
 } else {
-    // W przypadku braku 'category', przekierowanie lub wyświetlenie błędu
     die("Błąd: Nie wybrano kategorii.");
 }
 
 $query = "";
+$categoryName = "";
+$videoFile = ""; 
+
 if ($category == 'fotowoltaika') {
     $query = "SELECT * FROM `fotowoltaika`";
+    $categoryName = "Fotowoltaika";
+    $videoFile = "filmiki/solar_panels.mp4";
 } elseif ($category == 'wiatraki') {
-    $query = "SELECT * FROM `turbiny wiatrowe`";
+    $query = "SELECT * FROM `turbiny_wiatrowe`";
+    $categoryName = "Turbiny Wiatrowe";
+    $videoFile = "filmiki/windmill.mp4"; 
 } elseif ($category == 'geotermia') {
-    $query = "SELECT * FROM `energia geometralna`";
+    $query = "SELECT * FROM `energia_geotermalna`";
+    $categoryName = "Energia Geotermalna";
+    $videoFile = "filmiki/Geothermal heating.mp4"; 
 }
 
 $result = mysqli_query($conn, $query);
-$row = mysqli_fetch_assoc($result);
 ?>
 
 <!DOCTYPE html>
@@ -31,32 +37,31 @@ $row = mysqli_fetch_assoc($result);
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <video autoplay muted loop class="background-video">
+        <source src="<?php echo $videoFile; ?>" type="video/mp4">
+        Twoja przeglądarka nie obsługuje odtwarzania wideo.
+    </video>
+
     <div class="content">
-        <h2>Informacje o <?php echo ucfirst($category); ?></h2>
-        <?php
-        if ($category == 'fotowoltaika') {
-            echo "<p>Doradztwo techniczne i energetyczne, projektowanie i montaż instalacji fotowoltaicznych...</p>";
-            echo "<ul>";
-            foreach ($row as $key => $value) {
-                echo "<li><strong>$key:</strong> $value</li>";
-            }
-            echo "</ul>";
-        } elseif ($category == 'wiatraki') {
-            echo "<p>Projektowanie, montaż oraz serwis turbin wiatrowych. Audyty i modernizacja...</p>";
-            echo "<ul>";
-            foreach ($row as $key => $value) {
-                echo "<li><strong>$key:</strong> $value</li>";
-            }
-            echo "</ul>";
-        } elseif ($category == 'geotermia') {
-            echo "<p>Doradztwo, projektowanie i montaż systemów geotermalnych. Wiercenia, serwis pomp ciepła...</p>";
-            echo "<ul>";
-            foreach ($row as $key => $value) {
-                echo "<li><strong>$key:</strong> $value</li>";
-            }
-            echo "</ul>";
-        }
-        ?>
+        <h2>Informacje o <?php echo $categoryName; ?></h2>
+        <table class="details-table">
+            <thead>
+                <tr>
+                    <th>Opis</th>
+                    <th>Informacje</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                while ($row = mysqli_fetch_assoc($result)) {
+                    foreach ($row as $key => $value) {
+                        echo "<tr><td><strong>$key</strong></td><td>$value</td></tr>";
+                    }
+                }
+                ?>
+            </tbody>
+        </table>
+        <a href="index.php" class="button">Powrót do strony głównej</a>
     </div>
 </body>
 </html>
