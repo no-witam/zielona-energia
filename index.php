@@ -6,7 +6,6 @@
     <title>Zielona Energia</title>
     <link rel="stylesheet" href="style.css">
     <script>
-        // JavaScript do zmiany slajdów i tła
         let currentSlide = 0;
         
         function showSlide(index) {
@@ -14,21 +13,18 @@
             const dots = document.querySelectorAll('.dot');
             const background = document.querySelector('.background');
 
-            // Ukryj wszystkie slajdy i usuń aktywne klasy z kropek
             slides.forEach(slide => slide.style.display = 'none');
             dots.forEach(dot => dot.classList.remove('active'));
 
-            // Wyświetl aktualny slajd
             slides[index].style.display = 'block';
             dots[index].classList.add('active');
 
-            // Zmień tło w zależności od slajdu
             if (index === 0) {
-                background.style.backgroundImage = "url('fotowoltaika.jpg')";
+                background.style.backgroundImage = "url('images/fotowoltaika.jpg')";
             } else if (index === 1) {
-                background.style.backgroundImage = "url('wiatraki.png')";
+                background.style.backgroundImage = "url('images/wiatraki.jpeg')";
             } else if (index === 2) {
-                background.style.backgroundImage = "url('energia geo.png')";
+                background.style.backgroundImage = "url('images/energia geo.png')";
             }
         }
 
@@ -73,4 +69,3 @@
     </div>
 </body>
 </html>
-
