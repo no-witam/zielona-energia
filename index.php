@@ -58,6 +58,25 @@
                     <p>Doradztwo i badania, projektowanie i montaż systemów geotermalnych. Wiercenia i serwis pomp ciepła.</p>
                     <a href="details.php?category=geotermia" class="button">Dowiedz się więcej</a>
                 </div>
+                
+            <div class="contact-form">
+                <h2>Skontaktuj się z nami</h2>
+                <form action="contact.php" method="POST">
+                    <label for="imie">Imię i nazwisko:</label>
+                    <input type="text" id="imie" name="imie" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="temat">Temat:</label>
+                    <input type="text" id="temat" name="temat" required>
+
+                    <label for="wiadomosc">Wiadomość:</label>
+                    <textarea id="wiadomosc" name="wiadomosc" rows="5" required></textarea>
+                    <button type="submit">Wyślij wiadomość</button>
+                </form>
+            </div>
+
 
                 <div class="dots">
                     <span class="dot" onclick="showSlide(0)"></span>
@@ -69,3 +88,4 @@
     </div>
 </body>
 </html>
+
