@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Paź 22, 2024 at 09:54 AM
+-- Generation Time: Paź 29, 2024 at 10:12 AM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -95,6 +95,21 @@ INSERT INTO `turbiny_wiatrowe` (`id`, `doradztwo_audyty`, `projektowanie`, `mont
 (1, 'Ocena warunków wiatrowych.', 'Projektowanie farmy wiatrowej.', 'Montaż turbin.', 'Regularne przeglądy turbin.', 'Monitorowanie pracy turbin.', 'Demontaż starych turbin.'),
 (2, 'Pomiar prędkości wiatru.', 'Dobór turbin.', 'Budowa infrastruktury.', 'Naprawa turbin.', 'Optymalizacja ustawień.', 'Modernizacja instalacji.');
 
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `wiadomosci`
+--
+
+CREATE TABLE `wiadomosci` (
+  `id` int(11) NOT NULL,
+  `imie` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `temat` varchar(255) NOT NULL,
+  `wiadomosc` text NOT NULL,
+  `czas` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Indeksy dla zrzutów tabel
 --
@@ -118,6 +133,12 @@ ALTER TABLE `turbiny_wiatrowe`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeksy dla tabeli `wiadomosci`
+--
+ALTER TABLE `wiadomosci`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -138,8 +159,15 @@ ALTER TABLE `fotowoltaika`
 --
 ALTER TABLE `turbiny_wiatrowe`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `wiadomosci`
+--
+ALTER TABLE `wiadomosci`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
