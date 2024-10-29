@@ -2,7 +2,7 @@
 $servername = "localhost";  // Serwer bazy danych
 $username = "root";          // Nazwa użytkownika
 $password = "";              // Hasło
-$database = "zielona_en";    // Zmieniona nazwa bazy danych
+$database = "ziel_en";    // Zmieniona nazwa bazy danych
 
 // Połączenie z bazą danych
 $conn = mysqli_connect($servername, $username, $password, $database);
