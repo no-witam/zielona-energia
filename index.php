@@ -61,7 +61,19 @@
                 
             <div class="contact-form">
                 <h2>Skontaktuj się z nami</h2>
-                <form action="contact.php" method="POST">
+                <?php
+                    session_start();
+                    $formMessage = "";
+                    if (isset($_SESSION['form_success'])) {
+                        $formMessage = $_SESSION['form_success'];
+                        unset($_SESSION['form_success']);
+                    } elseif (isset($_SESSION['form_error'])) {
+                        $formMessage = $_SESSION['form_error'];
+                        unset($_SESSION['form_error']);
+                    }
+                ?>
+
+                <form action="kontakt.php" method="POST">
                     <label for="imie">Imię i nazwisko:</label>
                     <input type="text" id="imie" name="imie" required>
 
@@ -75,6 +87,9 @@
                     <textarea id="wiadomosc" name="wiadomosc" rows="5" required></textarea>
                     <button type="submit">Wyślij wiadomość</button>
                 </form>
+                <?php if ($formMessage): ?>
+                    <p style="color: green;"><?php echo $formMessage; ?></p>
+                <?php endif; ?>
             </div>
 
 
@@ -88,4 +103,5 @@
     </div>
 </body>
 </html>
+
 
