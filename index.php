@@ -75,7 +75,7 @@ mysqli_query($conn, $update_query);
 <header>
     <div class="header-container">
         <div class="licznik">
-            <p>Strona gości: <?php echo $nowa_liczba_wyswietlen; ?> razy</p>
+            <p>liczba gości: <?php echo $nowa_liczba_wyswietlen; ?> razy</p>
         </div>
         <div class="work-hours">
             <h3 id="clock"></h3>
