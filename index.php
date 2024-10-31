@@ -1,3 +1,15 @@
+<?php
+include 'database.php';
+
+$query = "SELECT liczba FROM licznik_wyswietlen WHERE id = 1";
+$result = mysqli_query($conn, $query);
+$row = mysqli_fetch_assoc($result);
+$liczba_wyswietlen = $row['liczba'];
+
+$nowa_liczba_wyswietlen = $liczba_wyswietlen + 1;
+$update_query = "UPDATE licznik_wyswietlen SET liczba = $nowa_liczba_wyswietlen WHERE id = 1";
+mysqli_query($conn, $update_query);
+?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -40,6 +52,10 @@
     </script>
 </head>
 <body>
+    <div class="licznik">
+        <p>Strona wyświetlona: <?php echo $nowa_liczba_wyswietlen; ?> razy</p>
+    </div>
+
     <div class="background">
         <div class="content">
             <div class="slideshow-container">
@@ -103,5 +119,3 @@
     </div>
 </body>
 </html>
-
-
