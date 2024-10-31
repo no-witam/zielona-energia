@@ -156,3 +156,10 @@ body, html {
 .contact-form button:hover {
     background-color: #218838;
 }
+.licznik {
+    background-color: rgba(0, 128, 0, 0.8);
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    font-size: 20px;
+}
