@@ -110,6 +110,15 @@ CREATE TABLE `wiadomosci` (
   `czas` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+
+CREATE TABLE licznik_wyswietlen (
+  id INT(11) NOT NULL AUTO_INCREMENT,
+  liczba INT(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (id)
+);
+
+INSERT INTO licznik_wyswietlen (liczba) VALUES (0);  
+
 --
 -- Indeksy dla zrzutów tabel
 --
