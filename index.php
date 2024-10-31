@@ -45,16 +45,44 @@ mysqli_query($conn, $update_query);
             showSlide(currentSlide);
         }
 
+        function updateClock() {
+            const now = new Date();
+            const options = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            const timeString = now.toLocaleTimeString('pl-PL', options);
+            document.getElementById('clock').textContent = timeString;
+
+            const startHour = 8; 
+            const endHour = 16; 
+            const currentHour = now.getHours();
+
+            const workStatus = document.querySelector('.work-hours p');
+            if (currentHour >= startHour && currentHour < endHour) {
+                workStatus.textContent = "Godziny pracy: 8:00 - 16:00 (Jesteśmy otwarci)";
+            } else {
+                workStatus.textContent = "Godziny pracy: 8:00 - 16:00 (Poza godzinami pracy)";
+            }
+        }
+
         window.onload = function() {
             showSlide(currentSlide);
             setInterval(nextSlide, 5000); 
+            setInterval(updateClock, 1000); 
+            updateClock();
         }
     </script>
 </head>
 <body>
-    <div class="licznik">
-        <p>Strona wyświetlona: <?php echo $nowa_liczba_wyswietlen; ?> razy</p>
+<header>
+    <div class="header-container">
+        <div class="licznik">
+            <p>Strona gości: <?php echo $nowa_liczba_wyswietlen; ?> razy</p>
+        </div>
+        <div class="work-hours">
+            <h3 id="clock"></h3>
+            <p>Godziny pracy: 8:00 - 16:00</p>
+        </div>
     </div>
+</header>
 
     <div class="background">
         <div class="content">
