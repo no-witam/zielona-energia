@@ -156,10 +156,22 @@ body, html {
 .contact-form button:hover {
     background-color: #218838;
 }
-.licznik {
-    background-color: rgba(0, 128, 0, 0.8);
-    color: #fff;
-    text-align: center;
-    padding: 5px;
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(0, 128, 0, 0.9);
+    color: white;
     font-size: 20px;
+}
+
+.licznik p,
+.work-hours h3,
+.work-hours p {
+    margin: 0;
+}
+
+.work-hours {
+    text-align: right;
 }
